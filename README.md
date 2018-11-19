@@ -1,1 +1,1 @@
-# WPF-Generator
+# WFC-Generator
