@@ -224,10 +224,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
-  name: straight_wall+270
+  tagName: straight_wall+270
   weight: 1
   ports:
-    up: wall
+    up: wall+270
     down: solid
     right: straight_wall+270
     left: straight_wall+270

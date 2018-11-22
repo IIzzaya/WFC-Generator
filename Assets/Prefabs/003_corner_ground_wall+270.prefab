@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4334891475440888}
   - component: {fileID: 114400023517136256}
   m_Layer: 0
-  m_Name: 003_corner_wall+270
+  m_Name: 003_corner_ground_wall+270
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
-  name: corner_wall+270
+  tagName: corner_ground_wall+270
   weight: 1
   ports:
     up: corner_wall+270

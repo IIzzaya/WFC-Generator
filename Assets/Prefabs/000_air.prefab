@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  name: air
+  tagName: air
   weight: 1
   ports:
     up: air

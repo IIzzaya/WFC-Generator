@@ -10,14 +10,28 @@ public struct Ports {
 	public string up, down, right, left, front, back;
 }
 
+[Serializable]
+public struct WavePrefabToGenerate {
+	public GameObject prefab;
+	public Vector3 position;
+	public Quaternion rotation;
+
+	public WavePrefabToGenerate(GameObject prefab, Vector3 position, Quaternion? rotation) {
+		this.prefab = prefab;
+		this.position = position;
+		if (rotation != null) this.rotation = (Quaternion) rotation;
+		else this.rotation = Quaternion.identity;
+	}
+}
+
 public class WavePrefab : MonoBehaviour {
 
 	[Header("Profile")]
 	public int id;
-	public string name;
-	[HideInInspector] public string idName {
+	public string tagName;
+	[HideInInspector] public string idTagName {
 		get {
-			return id.ToString().PadLeft(3, '0') + "_" + name;
+			return id.ToString().PadLeft(3, '0') + "_" + tagName;
 		}
 	}
 	public int weight = 1;
@@ -57,23 +71,26 @@ public class WavePrefab : MonoBehaviour {
 
 		var style = new GUIStyle();
 		style.alignment = TextAnchor.MiddleCenter;
-		style.normal.textColor = Color.black;
 
 		style.fontSize = 22;
-		Handles.Label(position + transform.rotation * new Vector3(1, 1, 1) / 2f, name, style);
+		style.normal.textColor = Color.black;
+		// Handles.Label(position + transform.rotation * new Vector3(1, 1, 1) / 2f, tagName, style);
 		style.fontSize = 12;
+		style.normal.textColor = Color.green;
 		Gizmos.DrawWireSphere(position + transform.rotation * new Vector3(1, 2, 1) / 2f, 0.1f);
-		Handles.Label(position + transform.rotation * new Vector3(1, 2, 1) / 2f, ports.up + "@0", style);
+		Handles.Label(position + transform.rotation * new Vector3(1, 2, 1) / 2f, ports.up, style);
 		Gizmos.DrawWireSphere(position + transform.rotation * new Vector3(1, 0, 1) / 2f, 0.1f);
-		Handles.Label(position + transform.rotation * new Vector3(1, 0, 1) / 2f, ports.down + "@1", style);
+		Handles.Label(position + transform.rotation * new Vector3(1, 0, 1) / 2f, ports.down , style);
+		style.normal.textColor = Color.red;
 		Gizmos.DrawWireSphere(position + transform.rotation * new Vector3(2, 1, 1) / 2f, 0.1f);
-		Handles.Label(position + transform.rotation * new Vector3(2, 1, 1) / 2f, ports.right + "@2", style);
+		Handles.Label(position + transform.rotation * new Vector3(2, 1, 1) / 2f, ports.right, style);
 		Gizmos.DrawWireSphere(position + transform.rotation * new Vector3(0, 1, 1) / 2f, 0.1f);
-		Handles.Label(position + transform.rotation * new Vector3(0, 1, 1) / 2f, ports.left + "@3", style);
+		Handles.Label(position + transform.rotation * new Vector3(0, 1, 1) / 2f, ports.left, style);
+		style.normal.textColor = Color.blue;
 		Gizmos.DrawWireSphere(position + transform.rotation * new Vector3(1, 1, 2) / 2f, 0.1f);
-		Handles.Label(position + transform.rotation * new Vector3(1, 1, 2) / 2f, ports.front + "@4", style);
+		Handles.Label(position + transform.rotation * new Vector3(1, 1, 2) / 2f, ports.front, style);
 		Gizmos.DrawWireSphere(position + transform.rotation * new Vector3(1, 1, 0) / 2f, 0.1f);
-		Handles.Label(position + transform.rotation * new Vector3(1, 1, 0) / 2f, ports.back + "@5", style);
+		Handles.Label(position + transform.rotation * new Vector3(1, 1, 0) / 2f, ports.back, style);
 
 		// for (int i = 0; i < 6; i++) {
 		// 	if (modulePrototype.Faces[i].Walkable) {

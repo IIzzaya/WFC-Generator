@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 4
-  name: wall+90
+  tagName: wall+90
   weight: 1
   ports:
     up: wall+90
