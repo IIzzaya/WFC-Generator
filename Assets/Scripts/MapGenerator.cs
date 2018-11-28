@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour {
 
-	public float slotSize = 2.0f;
+	public float slotSize = 1.0f;
 	public int xCount = 16;
 	public int zCount = 16;
 	public int yCount = 16;
@@ -18,13 +18,18 @@ public class MapGenerator : MonoBehaviour {
 	public WaveManager waveManager;
 	public CollaspeSystem collaspeSystem;
 
+#if UNITY_EDITOR
+
 	private void OnDrawGizmos() {
-		Gizmos.color = Color.green;
+		Gizmos.color = new Color(1f, 1f, 0f, 0.5f);
 
 		var cubeSize = new Vector3(xCount, yCount, zCount) * slotSize;
 
 		Gizmos.DrawWireCube(cubeSize / 2f, cubeSize);
+
 	}
+
+#endif
 
 	private void Awake() {
 		Debug.Log("Awake");

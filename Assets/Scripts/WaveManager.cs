@@ -39,7 +39,6 @@ public class WaveManager : MonoBehaviour {
 	// public static WaveManager instance;
 	private Wave[] waves;
 
-	public int waveListLength = 0;
 	public List<Wave> waveList = new List<Wave>();
 	public List<GameObject> wavePrefabList = new List<GameObject>();
 
@@ -49,6 +48,7 @@ public class WaveManager : MonoBehaviour {
 	public List<List<int>> waveBindComparedPort = new List<List<int>>();
 
 	public int[] unCollaspedPortsPreset;
+	public int[] unCollaspedWavesWeightPreset;
 
 	public IntVector3 waveSlotGridStartCoordinate;
 	public IntVector3 waveSlotGridEndCoordinate;
@@ -66,7 +66,7 @@ public class WaveManager : MonoBehaviour {
 		for (int i = 0; i < size.X; i++) {
 			for (int j = 0; j < size.Y; j++) {
 				for (int k = 0; k < size.Z; k++) {
-					waveSlotGrid[i, j, k] = new WaveSlot(new IntVector3(i, j, k), collaspeSystem, waveListLength, unCollaspedPortsPreset);
+					waveSlotGrid[i, j, k] = new WaveSlot(new IntVector3(i, j, k), collaspeSystem, waveList.Count, unCollaspedPortsPreset, unCollaspedWavesWeightPreset);
 					waveSlotCoordinateList.Add(new IntVector3(i, j, k));
 				}
 			}
@@ -97,7 +97,7 @@ public class WaveManager : MonoBehaviour {
 	}
 
 	void ConvertWavePrefabToWave(WavePrefab prefab, ref Wave wave) {
-		wave.hashCode = waveListLength;
+		wave.hashCode = waveList.Count;
 		wave.name = prefab.tagName;
 		wave.weight = prefab.weight;
 		var ports = new string[6];
@@ -177,13 +177,16 @@ public class WaveManager : MonoBehaviour {
 		// }
 	}
 
-	public void CalculateUnCollaspedPortPreset() {
+	public void CalculatePreset() {
 		unCollaspedPortsPreset = new int[portDictionaryLength];
+		unCollaspedWavesWeightPreset = new int[waveList.Count];
 
-		foreach (var item in waveList) {
-			foreach (var subItem in item.ports) {
-				unCollaspedPortsPreset[subItem]++;
+		for (int i = 0; i < waveList.Count; i++) {
+			foreach (var item in waveList[i].ports) {
+				unCollaspedPortsPreset[item]++;
 			}
+
+			unCollaspedWavesWeightPreset[i] = waveList[i].weight;
 		}
 
 		// var str = "";
@@ -217,10 +220,9 @@ public class WaveManager : MonoBehaviour {
 			ConvertWavePrefabToWave(item, ref newWave);
 			waveList.Add(newWave);
 			wavePrefabList.Add(item.gameObject);
-			waveListLength++;
 		}
 		AddWaveBindComparedPort();
-		CalculateUnCollaspedPortPreset();
+		CalculatePreset();
 
 		Debug.Log("[WM]: RegisterWaves Successful");
 	}

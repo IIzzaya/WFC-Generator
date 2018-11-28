@@ -255,11 +255,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collaspeSystem: {fileID: 0}
   mapGenerator: {fileID: 0}
-  waveListLength: 0
   waveList: []
   wavePrefabList: []
   portDictionaryLength: 0
   unCollaspedPortsPreset: 
+  unCollaspedWavesWeightPreset: 
   waveSlotGridStartCoordinate:
     X: 0
     Y: 0
@@ -275,12 +275,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 174966709}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 493108070}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &179493649
 Prefab:
@@ -785,7 +785,7 @@ MonoBehaviour:
   defaultBlock: {fileID: 1856672578210184, guid: ad21b8a78a8005842871077c869dc79f,
     type: 2}
   addGroup: 1
-  wavePrefabGroup: {fileID: 1116707311269548, guid: 06884ca3253dd7e4195c6fc0f6093934,
+  wavePrefabGroup: {fileID: 1475615473577472, guid: cd1bd2d7b4388ff46ae94541b28d38b6,
     type: 2}
   wavePrefabs: []
   waveManager: {fileID: 174966710}
@@ -799,7 +799,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 174966711}
+  - {fileID: 1821736059}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1534,7 +1536,7 @@ Transform:
   - {fileID: 2059778567}
   - {fileID: 1857746432}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1821736057
 GameObject:
@@ -1574,12 +1576,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1821736057}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 493108070}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1833574159
 Prefab:
@@ -1721,6 +1723,11 @@ Prefab:
     - target: {fileID: 4901361419914904, guid: 06884ca3253dd7e4195c6fc0f6093934, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114895875798512726, guid: 06884ca3253dd7e4195c6fc0f6093934,
+        type: 2}
+      propertyPath: weight
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06884ca3253dd7e4195c6fc0f6093934, type: 2}

@@ -6270,7 +6270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   tagName: air
-  weight: 1
+  weight: 100
   ports:
     up: air
     down: air

@@ -61,9 +61,9 @@ public class WaveSlot {
 		MarkToCollaspeWave(toCollaspedWaveHashCodes);
 	}
 
-	public WaveSlot(IntVector3 coordinate, CollaspeSystem system, int waveCount, int[] unCollaspedPortsPreset) {
+	public WaveSlot(IntVector3 coordinate, CollaspeSystem system, int waveCount, int[] unCollaspedPortsPreset, int[] unCollaspedWavesWeightPreset) {
 		this.coordinate = coordinate;
 		this.collaspeSystem = system;
-		superpositionOfWaves = new SuperpositionOfWaves(waveCount, unCollaspedPortsPreset);
+		superpositionOfWaves = new SuperpositionOfWaves(waveCount, unCollaspedPortsPreset, unCollaspedWavesWeightPreset);
 	}
 }

@@ -362,7 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   tagName: solid
-  weight: 1
+  weight: 100
   ports:
     up: solid
     down: solid

@@ -27,6 +27,7 @@ public class SuperpositionOfWaves {
 
 	public int unCollaspedWavesCount;
 	public bool[] unCollaspedWaves; // false means unCollasped
+	public int[] unCollaspedWavesWeight;
 
 	public int[] unCollaspedPorts;
 
@@ -34,11 +35,13 @@ public class SuperpositionOfWaves {
 	public List<int> toCollaspeArray = new List<int>();
 	public bool[] toCollaspeWavesHashCode; // false means unMarked
 
-	public SuperpositionOfWaves(int waveCount, int[] unCollaspedPortsPreset) {
+	public SuperpositionOfWaves(int waveCount, int[] unCollaspedPortsPreset, int[] unCollaspedWavesWeightPreset) {
 		unCollaspedWavesCount = waveCount;
 		unCollaspedWaves = new bool[waveCount];
 		toCollaspeWavesHashCode = new bool[waveCount];
+
 		unCollaspedPorts = (int[]) unCollaspedPortsPreset.Clone();
+		unCollaspedWavesWeight = (int[]) unCollaspedWavesWeightPreset.Clone();
 	}
 
 	public void MarkToCollaspeWave(int[] waveHashCodes, ref bool shouldAddToArray) {
@@ -98,11 +101,13 @@ public class SuperpositionOfWaves {
 		var unCollaspedWavesList = new List<int>();
 		for (int i = 0; i < unCollaspedWaves.Length; i++) {
 			if (!unCollaspedWaves[i]) {
-				unCollaspedWavesList.Add(i);
+				for (int j = 0; j < unCollaspedWavesWeight[i]; j++) {
+					unCollaspedWavesList.Add(i);
+				}
 			}
 		}
 
-		var randomIndex = Random.Range(0, unCollaspedWavesCount);
+		var randomIndex = Random.Range(0, unCollaspedWavesList.Count);
 		return unCollaspedWavesList[randomIndex];
 	}
 
