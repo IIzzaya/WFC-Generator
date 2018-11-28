@@ -74,7 +74,7 @@ public class WavePrefab : MonoBehaviour {
 
 		style.fontSize = 18;
 		style.normal.textColor = Color.black;
-		Handles.Label(position + transform.rotation * new Vector3(1, 1, 1) / 2f, tagName + "[" + weight + "]", style);
+		// Handles.Label(position + transform.rotation * new Vector3(1, 1, 1) / 2f, tagName + "[" + weight + "]", style);
 		style.fontSize = 12;
 		style.normal.textColor = Color.green;
 		Gizmos.DrawWireSphere(position + transform.rotation * new Vector3(1, 2, 1) / 2f, 0.1f);
