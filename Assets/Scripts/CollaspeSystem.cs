@@ -25,9 +25,10 @@ public class CollaspeSystem : MonoBehaviour {
 
             finishedCollaspeWaveSlotArray.Add(toCollaspeWaveSlot);
             if (toCollaspeWaveSlot.wavePrefab) {
-                Debug.Log(toCollaspeWaveSlot.coordinate + ": " + toCollaspeWaveSlot.wavePrefab.name);
+                // Debug.Log(toCollaspeWaveSlot.coordinate + ": " + toCollaspeWaveSlot.wavePrefab.name);
                 var prefab = new WavePrefabToGenerate(toCollaspeWaveSlot.wavePrefab, toCollaspeWaveSlot.coordinate.ToVector3(), Quaternion.identity);
                 var obj = Instantiate(prefab.prefab, prefab.position, prefab.rotation);
+                
                 Destroy(obj.GetComponent<WavePrefab>());
             }
             toCollaspeWaveSlotArray.RemoveAt(0);
